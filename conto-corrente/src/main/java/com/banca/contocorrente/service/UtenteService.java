@@ -1,6 +1,6 @@
 package com.banca.contocorrente.service;
 
-import com.banca.contocorrente.DTO.UtenteRegistrazioneDTO;
+import com.banca.contocorrente.DTO.UtenteRequestDTO;
 import com.banca.contocorrente.DTO.UtenteResponseDTO;
 import com.banca.contocorrente.entity.Indirizzo;
 import com.banca.contocorrente.entity.Utente;
@@ -24,11 +24,11 @@ public class UtenteService {
         this.utenteMapper = utenteMapper;
     }
 
-    public UtenteResponseDTO save(UtenteRegistrazioneDTO utenteRegistrazioneDTO){
-        if(utenteRegistrazioneDTO == null || utenteRegistrazioneDTO.mail() == null || utenteRepository.findByMail(utenteRegistrazioneDTO.mail()) != null) {
+    public UtenteResponseDTO save(UtenteRequestDTO utenteRequestDTO){
+        if(utenteRequestDTO == null || utenteRequestDTO.mail() == null || utenteRepository.findByMail(utenteRequestDTO.mail()) != null) {
             throw new RuntimeException("Errore");
         }
-        Utente utente = utenteMapper.toEntity(utenteRegistrazioneDTO);
+        Utente utente = utenteMapper.toEntity(utenteRequestDTO);
         Indirizzo saveIndirizzo = indirizzoRepository.save(utente.getIndirizzo());
         utente.setIndirizzo(saveIndirizzo);
 
