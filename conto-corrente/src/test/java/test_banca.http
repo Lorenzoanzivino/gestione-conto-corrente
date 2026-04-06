@@ -1,0 +1,24 @@
+### 1. Creazione di un nuovo Utente (Corretto per DTO Piatto)
+POST http://localhost:8080/utenti
+Content-Type: application/json
+
+{
+  "nome": "Mario",
+  "cognome": "Rossi",
+  "mail": "mario.rossi.test.3@email.com",
+  "via": "Via Roma 1",
+  "cap": "20100",
+  "citta": "Milano",
+  "provincia": "MI"
+}
+
+> {% client.global.set("utenteId", response.body.idUtente); %}
+
+### 2. Apertura Conto Corrente
+POST http://localhost:8080/contiCorrenti
+Content-Type: application/json
+
+{
+  "depositoIniziale": 1250.0,
+  "idUtente": {{utenteId}}
+}

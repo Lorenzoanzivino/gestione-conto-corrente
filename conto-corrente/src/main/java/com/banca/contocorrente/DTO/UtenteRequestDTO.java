@@ -1,7 +1,7 @@
 package com.banca.contocorrente.DTO;
 
 
-public record UtenteRegistrazioneDTO(
+public record UtenteRequestDTO(
         String nome,
         String cognome,
         String mail,

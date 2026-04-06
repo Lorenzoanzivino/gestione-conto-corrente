@@ -1,6 +1,6 @@
 package com.banca.contocorrente.mapper;
 
-import com.banca.contocorrente.DTO.UtenteRegistrazioneDTO;
+import com.banca.contocorrente.DTO.UtenteRequestDTO;
 import com.banca.contocorrente.DTO.UtenteResponseDTO;
 import com.banca.contocorrente.entity.Utente;
 import org.mapstruct.Mapper;
@@ -13,6 +13,6 @@ public interface UtenteMapper {
     @Mapping(target = "indirizzo.cap", source = "cap")
     @Mapping(target = "indirizzo.citta", source = "citta")
     @Mapping(target = "indirizzo.provincia", source = "provincia")
-    Utente toEntity(UtenteRegistrazioneDTO utenteRegistrazioneDTO);
+    Utente toEntity(UtenteRequestDTO utenteRequestDTO);
     UtenteResponseDTO toDTO(Utente utente);
 }

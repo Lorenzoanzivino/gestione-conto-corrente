@@ -1,6 +1,6 @@
 package com.banca.contocorrente.controller;
 
-import com.banca.contocorrente.DTO.UtenteRegistrazioneDTO;
+import com.banca.contocorrente.DTO.UtenteRequestDTO;
 import com.banca.contocorrente.DTO.UtenteResponseDTO;
 import com.banca.contocorrente.service.UtenteService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +18,7 @@ public class UtenteController {
     }
 
     @PostMapping(produces = "application/json", consumes = "application/json")
-    public UtenteResponseDTO createUtente(@RequestBody UtenteRegistrazioneDTO utenteRegistrazioneDTO){
-        return utenteService.save(utenteRegistrazioneDTO);
+    public UtenteResponseDTO createUtente(@RequestBody UtenteRequestDTO utenteRequestDTO){
+        return utenteService.save(utenteRequestDTO);
     }
 }
