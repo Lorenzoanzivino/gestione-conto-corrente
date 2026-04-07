@@ -1,11 +1,11 @@
-### 1. Creazione di un nuovo Utente (Corretto per DTO Piatto)
+### 1. Creazione di un nuovo Utente
 POST http://localhost:8080/utenti
 Content-Type: application/json
 
 {
   "nome": "Mario",
   "cognome": "Rossi",
-  "mail": "mario.rossi.test.3@email.com",
+  "mail": "mario.rossi.test.10@email.com",
   "via": "Via Roma 1",
   "cap": "20100",
   "citta": "Milano",
@@ -21,4 +21,28 @@ Content-Type: application/json
 {
   "depositoIniziale": 1250.0,
   "idUtente": {{utenteId}}
+}
+
+> {% client.global.set("contoId", response.body.numeroConto); %}
+
+### 3. Versamento sul Conto
+POST http://localhost:8080/movimenti
+Content-Type: application/json
+
+{
+  "tipo": "VERSAMENTO",
+  "importo": 500.0,
+  "idUtente": {{utenteId}},
+  "numeroConto": {{contoId}}
+}
+
+### 4. Prelievo dal Conto
+POST http://localhost:8080/movimenti
+Content-Type: application/json
+
+{
+  "tipo": "PRELIEVO",
+  "importo": 200.0,
+  "idUtente": {{utenteId}},
+  "numeroConto": {{contoId}}
 }
